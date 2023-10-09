@@ -1,12 +1,12 @@
 using API.Entities;
 using API.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 namespace API.Data;
 
 public class UserRepository : IUserRepository
 {
-    private readonly Datacontext _context;
-    public UserRepository(Datacontext context)
+    private readonly DataContext _context;
+    public UserRepository(DataContext context)
     {
             _context = context;
         
@@ -18,12 +18,16 @@ public class UserRepository : IUserRepository
 
     public async Task<AppUser> GetUserbyUsernameAsync(string username)
     {
-        return await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
+        return await _context.Users
+            .Include(p => p.Photos)
+            .SingleOrDefaultAsync(x => x.UserName == username);
     }
 
     public async Task<IEnumerable<AppUser>> GetUsersAsync()
     {
-        return await _context.Users.ToListAsync();
+        return await _context.Users
+            .Include(p => p.Photos)
+            .ToListAsync();
     }
 
     public async Task<bool> SaveAllAsync()
@@ -33,6 +37,6 @@ public class UserRepository : IUserRepository
 
     public void Update(AppUser user)
     {
-        _context.Entry(user).State = EntryState.Modified;
+        _context.Entry(user).State = EntityState.Modified;
     }
 }
