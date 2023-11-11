@@ -36,7 +36,6 @@ export class AccountService {
   setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
-    console.log(user.photoUrl)
   }
   logout(){
     localStorage.removeItem('user');
