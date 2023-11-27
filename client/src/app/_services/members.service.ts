@@ -20,7 +20,6 @@ export class MembersService {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
     }
-    // if (this.members.length > 0) return of(this.members);
 
     return this.http.get<Member[]>(this.baseUrl+'users', {observe: 'response', params}).pipe(
       map(response => {
@@ -33,10 +32,6 @@ export class MembersService {
         }
         return this.paginatedResult;
       })
-      // map(members => {
-      //   this.members = members;
-      //   return members;
-      // })
     );
   }
 
