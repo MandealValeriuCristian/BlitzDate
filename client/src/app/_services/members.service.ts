@@ -95,7 +95,7 @@ export class MembersService {
     return this.http.post(this.baseUrl + 'likes/' + username, {});
   }
   getLikes(predicate: string) {
-    return this.http.get(this.baseUrl + 'likes?predicate=' + predicate);
+    return this.http.get<Member[]>(this.baseUrl + 'likes?predicate=' + predicate);
   }
   private getPaginatedResult<T>(url: string, params: HttpParams) {
     const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
