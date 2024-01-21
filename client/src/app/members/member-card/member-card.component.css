@@ -37,7 +37,8 @@
 
 @keyframes fa-blink {
     0% {opacity: 1;}
-    100% {opacity: 0.4;}
+    50% {opacity: 0.4;}
+    100% {opacity: 1;}
 }
 
 .is-online {
