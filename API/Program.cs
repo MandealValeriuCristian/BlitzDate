@@ -21,7 +21,11 @@ var app = builder.Build();
  
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
+app.UseCors(builder => builder
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials()
+    .WithOrigins("http://localhost:4200", "https://localhost:4200"));
 //app.UseCors(myAngularPolicy);
  
 app.UseAuthentication();
