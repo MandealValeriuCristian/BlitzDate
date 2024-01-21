@@ -30,6 +30,8 @@ public class MessagesController : BaseApiController
         var sender = await _userRepository.GetUserbyUsernameAsync(username);
         var recipient = await _userRepository.GetUserbyUsernameAsync(createMessageDto.RecipientUsername);
 
+        if (recipient == null) return NotFound();
+
         var message = new Message
         {
             Sender = sender,
