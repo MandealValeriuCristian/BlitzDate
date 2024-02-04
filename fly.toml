@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'blitz-date'
+app = 'blitzdate'
 primary_region = 'otp'
 [env]
   ASPNETCORE_URLS="http://+:8080"
