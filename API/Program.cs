@@ -52,7 +52,7 @@ app.UseCors(builder => builder
     .AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials()
-    .WithOrigins("http://localhost:4200", "https://localhost:4200"));
+    .WithOrigins("http://localhost:4200", "https://localhost:4200", "https://blitzdate.fly.dev"));
 //app.UseCors(myAngularPolicy);
  
 app.UseAuthentication();
